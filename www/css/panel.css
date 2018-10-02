@@ -1,6 +1,8 @@
 body, html {
     height: 100%;
     margin: 0;
+    font-family: Arial;
+    background: dimgray;
 }
 .panel {
     width:        25%;
@@ -32,4 +34,6 @@ body, html {
     margin-left:   15px;
     border-radius: 4px;
     border:        black solid 1px;
+    text-align:    center;
+    line-height:   20pt;
 }
