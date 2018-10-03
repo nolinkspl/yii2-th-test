@@ -10,12 +10,20 @@ initRouting();
 function initContainers() {
     $container = new Container();
 
+    $container['repository'] = function ($c) {
+        return new Service\Repository();
+    };
+
     $container['auth_service'] = function ($c) {
-        return new Service\AuthorizationService();
+        return new Service\AuthorizationService(
+            $c['repository']
+        );
     };
 
     $container['account_service'] = function ($c) {
-        return new Service\AccountService();
+        return new Service\AccountService(
+            $c['repository']
+        );
     };
 
     $container['auth_controller'] = function ($c) {
