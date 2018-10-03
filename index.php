@@ -1,12 +1,9 @@
 <?php
 
-require 'vendor/altorouter/altorouter/AltoRouter.php';
-require 'src/config.php';
-
 use Pimple\Container;
 
-initContainers();
 initConfigs();
+initContainers();
 initRouting();
 
 
@@ -15,6 +12,8 @@ function initContainers() {
 }
 
 function initConfigs() {
+    require 'src/config.php';
+
     if ($GLOBALS['config']['is_debug_mode']) {
         ini_set('error_reporting', E_ALL);
         ini_set('display_errors', 1);
@@ -23,6 +22,8 @@ function initConfigs() {
 }
 
 function initRouting() {
+    require 'vendor/altorouter/altorouter/AltoRouter.php';
+
     $router = new AltoRouter();
     $router->setBasePath('');
     $router->map('GET', '/',     'www/index.php',           'home');
