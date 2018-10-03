@@ -4,7 +4,7 @@ namespace Service;
 
 use Entity\User;
 
-class AccountService {
+class AccountService extends BaseService {
 
     /**
      * @param string $username
