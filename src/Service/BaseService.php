@@ -4,5 +4,4 @@ namespace Service;
 
 class BaseService {
 
-
 }
