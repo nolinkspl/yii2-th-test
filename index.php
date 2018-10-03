@@ -14,9 +14,14 @@ function initContainers() {
         return new Service\AuthorizationService();
     };
 
+    $container['account_service'] = function ($c) {
+        return new Service\AccountService();
+    };
+
     $container['auth_controller'] = function ($c) {
         return new Controller\Auth(
-            $c['auth_service']
+            $c['auth_service'],
+            $c['account_service']
         );
     };
 }

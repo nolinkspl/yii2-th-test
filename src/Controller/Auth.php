@@ -12,8 +12,17 @@ class Auth extends BaseController {
      */
     private $_authService;
 
-    public function __construct(Service\AuthorizationService $authService) {
+    /**
+     * @var Service\AccountService
+     */
+    private $_accountService;
+
+    public function __construct(
+        Service\AuthorizationService $authService,
+        Service\AccountService $accountService
+    ) {
         $this->_authService = $authService;
+        $this->_accountService = $accountService;
     }
 
     public function authorization() {
@@ -27,11 +36,13 @@ class Auth extends BaseController {
             return $this->_jsonFailResponse([$e->getMessage()]);
         }
 
-
-        $user = null; /** @TODO get user */
+        $user = $this->_accountService->getUserByUsername($username);
+        if ($user === null) {
+            return $this->_jsonFailResponse(["User doesn't exist"]);
+        }
 
         try {
-            $this->_authService->authorizeUser($user);
+            $this->_authService->authorizeUser($user, $password);
         } catch (\Throwable $e) {
             return $this->_jsonFailResponse([$e->getMessage()]);
         } catch (Exception $e) {
