@@ -34,11 +34,16 @@ class Auth extends BaseController {
 
     /**
      * @param string $username
+     * @throws Exception\BadRequest
      */
     private function _checkUsername($username) {
         /** @TODO implements method */
     }
 
+    /**
+     * @param $password
+     * @throws Exception\BadRequest
+     */
     private function _checkPassword($password) {
         /** @TODO implements method */
     }
