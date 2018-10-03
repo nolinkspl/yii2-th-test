@@ -12,7 +12,7 @@ if ($GLOBALS['config']['is_debug_mode']) {
 $router = new AltoRouter();
 $router->setBasePath('');
 $router->map('GET', '/',     'www/index.php',           'home');
-$router->map('POST','/auth', ['controller' => '/src/Controller/Auth.php', 'action' => 'test'], 'auth');
+$router->map('POST','/auth', ['controller' => '/src/Controller/Auth.php', 'action' => 'authorization'], 'auth');
 
 $match = $router->match();
 

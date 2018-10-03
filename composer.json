@@ -1,5 +1,12 @@
 {
   "require": {
     "altorouter/altorouter": "1.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Controller\\": "controller/"
+    },
+    "files": [
+    ]
   }
 }
