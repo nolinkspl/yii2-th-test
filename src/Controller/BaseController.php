@@ -32,7 +32,7 @@ class BaseController {
      * @param string[] $data
      * @return string
      */
-    private function _jsonIsSuccess($isSuccess, array $errors = [], array $data = []) { // @TODO make private
+    private function _jsonIsSuccess($isSuccess, array $errors = [], array $data = []) {
         return $this->_jsonResponse(['success' => $isSuccess, 'error' => $errors, 'data' => $data]);
     }
 
