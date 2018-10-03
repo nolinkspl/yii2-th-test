@@ -3,8 +3,18 @@
 namespace Controller;
 
 use Exception;
+use Service;
 
 class Auth extends BaseController {
+
+    /**
+     * @var Service\AuthorizationService
+     */
+    private $_authService;
+
+    public function __construct(Service\AuthorizationService $authService) {
+        $this->_authService = $authService;
+    }
 
     public function authorization() {
         $username = trim($_POST['username']);

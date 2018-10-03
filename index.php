@@ -9,6 +9,16 @@ initRouting();
 
 function initContainers() {
     $container = new Container();
+
+    $container['auth_service'] = function ($c) {
+        return new Service\AuthorizationService();
+    };
+
+    $container['auth_controller'] = function ($c) {
+        return new Controller\Auth(
+            $c['auth_service']
+        );
+    };
 }
 
 function initConfigs() {
