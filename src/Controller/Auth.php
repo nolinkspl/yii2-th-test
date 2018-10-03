@@ -27,9 +27,18 @@ class Auth extends BaseController {
             return $this->_jsonFailResponse([$e->getMessage()]);
         }
 
-        /** @TODO make authorization service */
 
-        return $this->_jsonSuccessResponse([]);
+        $user = null; /** @TODO get user */
+
+        try {
+            $this->_authService->authorizeUser($user);
+        } catch (\Throwable $e) {
+            return $this->_jsonFailResponse([$e->getMessage()]);
+        } catch (Exception $e) {
+            return $this->_jsonFailResponse([$e->getMessage()]);
+        }
+
+        return $this->_jsonSuccessResponse([/** @TODO responce */]);
     }
 
     /**
