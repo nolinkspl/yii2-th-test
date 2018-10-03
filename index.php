@@ -15,9 +15,7 @@ function initContainers() {
     };
 
     $container['auth_service'] = function ($c) {
-        return new Service\AuthorizationService(
-            $c['repository']
-        );
+        return new Service\AuthorizationService();
     };
 
     $container['account_service'] = function ($c) {
@@ -26,10 +24,22 @@ function initContainers() {
         );
     };
 
+    $container['page_manager'] = function ($c) {
+        return new Service\PageManager($c['repository']);
+    };
+
     $container['auth_controller'] = function ($c) {
         return new Controller\Auth(
             $c['auth_service'],
             $c['account_service']
+        );
+    };
+
+    $container['page_controller'] = function ($c) {
+        return new Controller\Page(
+            $c['auth_service'],
+            $c['account_service'],
+            $c['page_manager']
         );
     };
 }

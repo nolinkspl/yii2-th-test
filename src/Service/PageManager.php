@@ -6,6 +6,15 @@ use Entity;
 
 class PageManager extends BaseService {
 
+    /**
+     * @var Repository
+     */
+    private $_repository;
+
+    public function __construct(Repository $repository) {
+        $this->_repository = $repository;
+    }
+
     public function createNewPage() {
         /** @TODO implements method */
     }
@@ -26,5 +35,12 @@ class PageManager extends BaseService {
     public function getPagesListByUser(Entity\User $user) {
         /** @TODO implements method */
         return [];
+    }
+
+    /**
+     * @param Entity\Page $page
+     */
+    public function savePage(Entity\Page $page) {
+        $this->_repository->savePage($page);
     }
 }
