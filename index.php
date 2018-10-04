@@ -8,6 +8,8 @@ initRouting();
 
 
 function initContainers() {
+    require "vendor/pimple/pimple/src/Pimple/Container.php";
+
     $container = new Container();
 
     $container['repository'] = function ($c) {
