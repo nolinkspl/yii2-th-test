@@ -62,20 +62,21 @@ function initRouting() {
     $router = new AltoRouter();
     $router->setBasePath('');
     $router->map('GET', '/',     'www/index.php',           'home');
-    $router->map('POST','/auth', ['controller' => '/src/Controller/Auth.php', 'action' => 'authorization'], 'auth');
+    $router->map('GET','/auth', ['controller' => '/src/Controller/Auth.php', 'action' => 'authorization'], 'auth');
 
     $match = $router->match();
 
-    if ($match === false) {
-        echo "// here you can handle 404 \n";
-    } else {
-        if (is_array($match['target'])) {
-            $controller = new $match['target']['controller']();
-            $actionName = $match['target']['action'];
-            $params = $match['params'];
-            /** @TODO something */
+    if($match) {
+        $target = $match["target"];
+        if(is_array($target)) {
+            $controller = new $target['controller'];
+            $controller->$target['action']($match["params"]);
         } else {
-            require $match['target'];
+            if(is_callable($match["target"])) call_user_func_array($match["target"], $match["params"]);
+            else require $match["target"];
         }
+    } else {
+        echo '404 lol';
+        die();
     }
 }
