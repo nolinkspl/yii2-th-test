@@ -18,7 +18,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url     : '/auth',
+            url     : '/demo/loginer.php',
             method  : 'post',
             data    : data,
             dataType: 'json',
