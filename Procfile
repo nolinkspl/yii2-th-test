@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-nginx -C rewrite.conf web/
+web: vendor/bin/heroku-php-nginx -C rewrite.conf /web/
