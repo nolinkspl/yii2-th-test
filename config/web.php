@@ -48,8 +48,8 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 [
-                    'pattern' => '<action>',
-                    'route' => '<action>'
+                    'pattern' => 'site/<action>',
+                    'route' => 'site/<action>'
                 ],
             ],
         ],
