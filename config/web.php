@@ -49,7 +49,7 @@ $config = [
             'rules' => [
                 [
                     'pattern' => '<action>',
-                    'route' => 'site/<action>', 'defaults' => ['language_code' => 'ru'],
+                    'route' => '<action>'
                 ],
             ],
         ],
