@@ -24,7 +24,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return [
             ['username', 'required'],
             ['username', 'string'],
-            ['balance', 'number'],
         ];
     }
 
@@ -78,7 +77,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
         Yii::error('Active record error: ' . json_encode($result->getErrors()));
         throw new Exception('Error');
-
     }
 
     /**
@@ -97,9 +95,32 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return $this->username;
     }
 
+    /**
+     * @return float
+     */
     public function balance()
     {
         return $this->balance;
+    }
+
+    /**
+     * @param $amount
+     * @throws \Exception
+     */
+    public function charge($amount)
+    {
+        $this->balance -= $amount;
+        $this->trySave();
+    }
+
+    /**
+     * @param float $amount
+     * @throws Exception
+     */
+    public function income($amount)
+    {
+        $this->balance += $amount;
+        $this->trySave();
     }
 
     /**
@@ -116,5 +137,14 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     public function validateAuthKey($authKey)
     {
         return true;
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function trySave() {
+        if (!$this->save()) {
+            throw new Exception('Unsaved');
+        };
     }
 }

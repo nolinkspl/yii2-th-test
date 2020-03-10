@@ -43,17 +43,20 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                [
+                    'pattern' => '<action>',
+                    'route' => 'site/<action>', 'defaults' => ['language_code' => 'ru'],
+                ],
             ],
         ],
-        */
         'assetManager' => [
             'appendTimestamp' => true,
         ],
+        'balance_handler' => 'app\components\BalanceHandler\Handler'
     ],
     'params' => $params,
 ];
