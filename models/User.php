@@ -6,6 +6,13 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Exception;
 
+/**
+ * Class User
+ * @package app\models
+ * @property int $id
+ * @property string $username
+ * @property float $balance
+ */
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
 
@@ -17,6 +24,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return [
             ['username', 'required'],
             ['username', 'string'],
+            ['balance', 'number'],
         ];
     }
 
@@ -48,6 +56,14 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     }
 
     /**
+     * @return User[]
+     */
+    public static function findAllUsers()
+    {
+        return static::find()->orderBy(['id' => SORT_ASC])->all();
+    }
+
+    /**
      * @param array $params
      * @return User
      * @throws \Exception
@@ -71,6 +87,19 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function username()
+    {
+        return $this->username;
+    }
+
+    public function balance()
+    {
+        return $this->balance;
     }
 
     /**
