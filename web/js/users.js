@@ -22,14 +22,14 @@ $(document).on('click', '.js-transfer-money-button', function () {
                 if (response.status === 'ok') {
                     alert('success');
                 } else {
-                    console.log(response.data);
+                    alert(response.data);
                 }
 
-                //window.location.reload();
+                window.location.reload();
             },
             error: function (response) {
                 alert('error');
-                //window.location.reload();
+                window.location.reload();
             }
         });
     })

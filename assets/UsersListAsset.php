@@ -15,7 +15,7 @@ class UsersListAsset extends AppAsset
         'css/site.css',
     ];
     public $js = [
-        'js/transfer-money.js',
+        'js/users.js',
     ];
     public $depends = [
         'app\assets\AppAsset',

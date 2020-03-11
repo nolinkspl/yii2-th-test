@@ -21,7 +21,7 @@ class Handler
             throw new TransferMoneyException('Same user transfer');
         }
 
-        if ($currentUser->balance < -1000) {
+        if ($currentUser->balance - $amount < -1000) {
             throw new TransferMoneyException('Balance can not be smaller than -1000');
         }
 

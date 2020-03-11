@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php foreach ($users as $user) { ?>
         <div class="row">
             <div class="col-md-1"><?= $user->getId() ?></div>
-            <div class="col-md-2"><?= $user->username() ?></div>
+            <div class="col-md-2"><?= Html::encode($user->username()) ?></div>
             <div class="col-md-3"><?= $user->balance() ?></div>
 
             <?php if (!empty(Yii::$app->user->id) && $user->getId() !== Yii::$app->user->id) { ?>
