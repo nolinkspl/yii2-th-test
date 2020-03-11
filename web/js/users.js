@@ -11,7 +11,7 @@ $(document).on('click', '.js-transfer-money-button', function () {
         var $amountInput = $popup.find('input[name=amount]');
 
         $.ajax({
-            url: 'transfer-money',
+            url: '?r=site/transfer-money',
             type: "POST",
             data: {
                 user_id: userId,

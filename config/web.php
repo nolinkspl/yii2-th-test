@@ -43,18 +43,18 @@ $config = [
             ],
         ],
         'db' => $db,
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                '<action>'       => 'site/<action>',
+//        'urlManager' => [
+//            'enablePrettyUrl' => true,
+//            'showScriptName' => false,
+//            'rules' => [
+//                '<action>'       => 'site/<action>',
 //                'index'          => 'site/index',
 //                'login'          => 'site/login',
 //                'logout'         => 'site/logout',
 //                'users'          => 'site/users',
 //                'transfer-money' => 'site/transfer-money',
-            ],
-        ],
+//            ],
+//        ],
         'assetManager' => [
             'appendTimestamp' => true,
         ],
