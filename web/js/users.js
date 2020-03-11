@@ -1,9 +1,14 @@
+var $popupOverlay = renderPopupOverlay();
+$('body').append($popupOverlay);
+
 $(document).on('click', '.js-transfer-money-button', function () {
 
     var userId = parseInt($(this).data('user-id'));
-    var $popup = $('.js-transfer-money-popup');
+    var $popup = renderTransferMoneyPopup();
+    $('body').append($popup);
 
-    $popup.toggle();
+    $popup.show();
+    $popupOverlay.show();
 
     $popup.find('button').click(function (e) {
         e.preventDefault();
@@ -24,13 +29,43 @@ $(document).on('click', '.js-transfer-money-button', function () {
                 } else {
                     alert(response.data);
                 }
+                closePopup($popup);
 
                 window.location.reload();
             },
             error: function (response) {
+                closePopup($popup);
                 alert('error');
                 window.location.reload();
             }
         });
-    })
+    });
+
+    $popupOverlay.click(function() {
+        closePopup($popup);
+    });
 });
+
+function closePopup($popup)
+{
+    $popup.remove();
+    $popupOverlay.hide();
+}
+
+function renderPopupOverlay()
+{
+    return $('<div class="popup-overlay"></div>');
+}
+
+function renderTransferMoneyPopup()
+{
+    return $('<div class="js-transfer-money-popup transfer-money-popup popover">\n' +
+        '    <div class="popover-title"></div>\n' +
+        '    <div class="popover-content">\n' +
+        '        <form href="#">\n' +
+        '            <label>Amount<input name="amount" type="number" required></label>\n' +
+        '            <button>Send</button>\n' +
+        '        </form>\n' +
+        '    </div>\n' +
+        '</div>');
+}

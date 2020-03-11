@@ -31,11 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php } ?>
 </div>
 
-
+<div class="popup-overlay"></div>
 <div class="js-transfer-money-popup transfer-money-popup popover">
     <div class="popover-title"></div>
     <div class="popover-content">
-        <form href="">
+        <form href="#">
             <label>Amount<input name="amount" type="number" required></label>
             <button>Send</button>
         </form>
