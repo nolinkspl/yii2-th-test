@@ -24,19 +24,18 @@ $(document).on('click', '.js-transfer-money-button', function () {
             },
             dataType: 'json',
             success: function (response) {
+                closePopup($popup);
+
                 if (response.status === 'ok') {
                     alert('success');
+                    window.location.reload();
                 } else {
                     alert(response.data);
                 }
-                closePopup($popup);
-
-                window.location.reload();
             },
             error: function (response) {
                 closePopup($popup);
                 alert('error');
-                window.location.reload();
             }
         });
     });

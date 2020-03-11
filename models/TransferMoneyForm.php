@@ -17,8 +17,7 @@ class TransferMoneyForm extends Model
         return [
             [['user_id', 'amount'], 'required'],
             ['user_id', 'integer'],
-            ['amount', 'number', 'min' => 0],
-            ['amount', 'compare', 'compareValue' => 0 , 'operator' => '>'],
+            ['amount', 'number'],
         ];
     }
 }
