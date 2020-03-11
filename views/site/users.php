@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="popover-title"></div>
     <div class="popover-content">
         <form href="#">
-            <label>Amount<input name="amount" type="number"></label>
+            <label>Amount<input name="amount" type="number" required></label>
             <button>Send</button>
         </form>
     </div>

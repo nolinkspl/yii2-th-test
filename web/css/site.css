@@ -125,3 +125,7 @@ a.desc:after {
     z-index: 999;
     display: none;
 }
+
+.site-about > .row {
+    line-height: 2.5em;
+}
